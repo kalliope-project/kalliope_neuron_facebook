@@ -1,0 +1,12 @@
+---
+  # must match the entry  point class name
+  name: "facebook"
+  type: "neuron"
+  author: "Team of Kalliope project"
+
+  kalliope_supported_version:
+    - 0.4
+
+  tags:
+    - "facebook"
+    - "social network"
