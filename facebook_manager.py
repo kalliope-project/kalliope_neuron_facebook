@@ -39,10 +39,21 @@ class Facebook_manager(NeuronModule):
                     profile = graph.get_object(self.user_name)
                     posts = graph.get_connections(profile['id'], 'posts')
 
+                    posts_messages = list()
+                    if "data" in posts:
+                        count = 0
+                        for data in posts["data"]:
+                            if count >= self.nb_messages:
+                                break
+                            count += 1
+                            # count < self.nb_messages
+                            if "message" in data:
+                                posts_messages.append(data["message"])
+
                     message = {
                         "action": self.action,
                         "user_name": self.user_name,
-                        "posts": posts["data"]
+                        "posts": posts_messages
                     }
 
             self.say(message)
