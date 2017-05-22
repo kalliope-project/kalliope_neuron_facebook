@@ -47,8 +47,7 @@ Each of them requires specific options, return values and synapses example :
     - facebook_manager:
         action: "POST"
         token: "MY_SECRET_TOKEN"
-        args:
-          - message
+        message: "{{ message }}"
   signals:
     - order: "post on facebook {{ message }}"
 ```
@@ -77,15 +76,14 @@ Each of them requires specific options, return values and synapses example :
 
 ``` yml
 - name: "read-facebook"
+  signals:
+    - order: "Read Facebook messages from {{ user_name }}"
   neurons:
     - facebook_manager:
         action: READ
         token: "MY_SECRET_TOKEN"
         nb_messages: 3
-        args:
-          - user_name
-  signals:
-    - order: "Read Facebook messages from {{ user_name }}"
+        user_name: "{{ user_name }}"  
 ```
 
 An example using the Jinja2 templates files:
